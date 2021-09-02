@@ -4,7 +4,8 @@ Created on Tue Aug 31 15:28:21 2021
 
 @author: ans-human
 """
-
+import time
+tic = time.process_time()
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -134,7 +135,9 @@ f[:, 0] = 0
 '''
     We define unit commitment 3D array for memoization.
     uc[i][x][j]: no of units produced by jth unit when first i units are used 
-                 to produce x MW of power.
+                 to produce x MW of power 
+                 OR we can say,
+                 no of units produced by the jth unit in f[i][x]
 '''
 # unit commitment declaration
 uc = np.zeros((N + 1, p_max + 1, N + 1))
@@ -250,3 +253,6 @@ def plot_ed():
 
 # Plotting Economic dispatch
 plot_ed()
+toc = time.process_time()
+
+print("Time = ", toc - tic)
